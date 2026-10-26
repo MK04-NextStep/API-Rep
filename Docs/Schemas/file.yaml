@@ -1,0 +1,34 @@
+type: object
+
+properties:
+  _id:
+    type: string
+
+  workspaceId:
+    type: string
+
+  uploadedBy:
+    type: string
+
+  originalName:
+    type: string
+
+  mimeType:
+    type: string
+
+  size:
+    type: integer
+
+  url:
+    type: string
+
+  publicId:
+    type: string
+
+  createdAt:
+    type: string
+    format: date-time
+
+  updatedAt:
+    type: string
+    format: date-time

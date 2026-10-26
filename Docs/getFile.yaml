@@ -1,0 +1,52 @@
+/file/{workspaceId}/{fileId}:
+  get:
+    summary: get file data
+
+    security:
+      bearerAuth: []
+
+    parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fileId
+        in: path
+        required: true
+        schema:
+          type: string
+
+    responses:
+      '200':
+        description: file updated successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success: 
+                  type: boolean
+                data:
+                  $ref: "./openApi.yaml#/components/schemas/File"
+
+      '400':
+        description: invalid data, or invalid file
+        content:
+          application/json:
+            schema: 
+              $ref: './openApi.yaml#/components/schemas/Error'
+              
+      '403':
+        description: user is not part of worksapce
+        content:
+          application/json:
+            schema: 
+              $ref: './openApi.yaml#/components/schemas/Error'
+
+      '404':
+        description: workspace not found, or invalid file
+        content:
+          application/json:
+            schema: 
+              $ref: './openApi.yaml#/components/schemas/Error' 

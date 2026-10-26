@@ -1,0 +1,33 @@
+type: object
+
+properties:
+  _id:
+    type: string
+  
+  workspaceId:
+    type: string
+
+  requestedBy:
+    type: string
+
+  status:
+    type: string
+    enum: ["CREATED","PENDING","PROCESSING","COMPLETED","FAILED"]
+  
+  fileUrl:
+    type: string
+
+  publicId:
+    type: string
+
+  completedAt:
+    type: string
+    format: date-time
+
+  createdAt:
+    type: string
+    format: date-time
+
+  updatedAt:
+    type: string
+    format: date-time

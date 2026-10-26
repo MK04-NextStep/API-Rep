@@ -1,0 +1,63 @@
+/auth/login:
+  post:
+    summary: login user
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            requried:
+              - email
+              - password
+            properties:
+              email:
+                type: string
+                format: email
+              password:
+                type: string
+                format: password
+
+    responses:
+      '200':
+        description: user login successfully
+        headers:
+          Set-cookie:
+            description: HTTP-only refresh token cookie
+            schema: 
+              type: string
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success: 
+                  type: boolean
+                data:
+                  $ref: './openApi.yaml#/components/schemas/User'
+                accessToken:
+                  type: string
+
+      '404':
+        description: user not found
+        content:
+          application/json:
+            schema:
+              $ref: './openApi.yaml#/components/schemas/Error'
+      
+      '401':
+        description: invalid email or password or login locked in
+        content:
+          application/json:
+            schema:
+              $ref: './openApi.yaml#/components/schemas/Error'
+
+      '403':
+        description: verify your email
+        content:
+          application/json:
+            schema:
+              $ref: './openApi.yaml#/components/schemas/Error'
+
+    

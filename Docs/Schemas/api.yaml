@@ -1,0 +1,37 @@
+type: object
+
+properties:
+  _id:
+    type: string
+
+  name:
+    type: string
+
+  workspaceId:
+    type: string
+
+  method:
+    type: string
+    enum: ["POST","GET","PATCH","DELETE","PUT","OPTIONS","HEAD"]
+
+  endpoint:
+    type: string
+
+  description:
+    type: string
+
+  status:
+    type: string
+    enum: ["draft","active","deprecated","archived"]
+
+  createdBy:
+    type: string
+    format: date-time
+
+  createdAt:
+    type: string
+    format: date-time
+
+  updatedAt:
+    type: string
+    format: date-time

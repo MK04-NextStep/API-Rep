@@ -1,0 +1,45 @@
+/auth/send-verification-email:
+  post:
+    summary: send verification email to user's email
+
+    requestBody:
+      required: true
+      content: 
+        application/json:
+          schema:
+            type: object
+            required:
+              - email
+            properties:
+              email:
+                type: string
+                format: email
+
+    responses:
+      '200':
+        description: otp has been send to user's email
+        content:
+          application/json:
+            schema:
+              $ref: './openApi.yaml#/components/schemas/Error'
+      
+      '400':
+          description: Invalid request data.
+          content:
+            application/json:
+              schema:
+                $ref: './openApi.yaml#/components/schemas/Error'
+
+      '404':
+        description: User with the provided email was not found.
+        content:
+          application/json:
+            schema:
+              $ref: './openApi.yaml#/components/schemas/Error'
+
+      '409':
+        description: Verification email was recently sent. Please try again later.
+        content:
+          application/json:
+            schema:
+              $ref: './openApi.yaml#/components/schemas/Error'

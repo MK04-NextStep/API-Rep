@@ -1,0 +1,35 @@
+openapi: 3.0.0
+
+info:
+  title: Your API
+  version: 1.0.0
+  description: API Documentation
+
+servers:
+  - url: http://localhost:5000
+
+paths:
+  {}
+
+components:
+  schemas:
+    Workspace:
+      $ref: './Schemas/workspace.yaml'
+
+    Error:
+      $ref: './Schemas/error.yaml'
+
+    User:
+      $ref: './Schemas/user.yaml'
+
+    Report:
+      $ref: './Schemas/report.yaml'
+
+    Pagination:
+      $ref: './Schemas/pagination.yaml'
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

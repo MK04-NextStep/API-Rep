@@ -1,0 +1,40 @@
+/member/accept:
+  post:
+    summary: accept the invite to join workspace
+
+    security:
+      bearerAuth: []
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema: 
+            type: object
+            required:
+              - otp
+            properties:
+              otp:
+                type: string
+        
+    responses:
+      '200':
+        description: user accepted successfully
+        content:
+          application/json:
+            schema:
+              $ref: './openApi.yaml#/components/schemas/Error'
+
+      '400':
+        description: invaid data
+        content:
+          application/json:
+            schema:
+              $ref: './openApi.yaml#/components/schemas/Error'
+
+      '401':
+        description: invalid otp
+        content:
+          application/json:
+            schema:
+              $ref: './openApi.yaml#/components/schemas/Error'

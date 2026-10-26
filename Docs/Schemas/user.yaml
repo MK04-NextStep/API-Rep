@@ -1,0 +1,31 @@
+type: object
+
+properties:
+  _id:
+    type: string
+
+  name:
+    type: string
+
+  email: 
+    type: string
+    format: email
+
+  isEmailVerified: 
+    type: boolean
+
+  profilePic:
+    type: object
+    properties:
+      url:
+        type: string
+      publicId:
+        type: string
+
+  createdAt:
+    type: string
+    format: date-time
+
+  updatedAt:
+    type: string
+    format: date-time

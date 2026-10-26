@@ -1,0 +1,57 @@
+/workspace/update/{workspaceId}:
+  patch:
+    summary: update workspace
+
+    requestBody: 
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name: 
+                type: string
+              description:
+                type: string
+              type: 
+                type: string
+                enum: ['personal', 'team']
+
+    parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+    
+    security: 
+      bearerAuth: []
+
+    responses:
+      '200':
+        description: worksapce updated successfully
+        content:
+          application/json:
+            schema: 
+              $ref: './openApi.yaml#/components/schemas/Error'
+
+      '400':
+        description: invalid data
+        content:
+          application/json:
+            schema: 
+              $ref: './openApi.yaml#/components/schemas/Error'
+              
+      '403':
+        description: user is not part of worksapce
+        content:
+          application/json:
+            schema: 
+              $ref: './openApi.yaml#/components/schemas/Error'
+
+      '404':
+        description: workspace not found
+        content:
+          application/json:
+            schema: 
+              $ref: './openApi.yaml#/components/schemas/Error'
