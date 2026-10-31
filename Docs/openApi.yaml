@@ -28,6 +28,15 @@ components:
     Pagination:
       $ref: './Schemas/pagination.yaml'
 
+    Api:
+      $ref: './Schemas/api.yaml'
+
+    File: 
+      $ref: './Schemas/file.yaml'
+
+    Member:
+      $ref: './Schemas/member.yaml'
+
   securitySchemes:
     bearerAuth:
       type: http

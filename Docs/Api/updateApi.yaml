@@ -1,0 +1,74 @@
+/api/{workspaceId}/{apiId}:
+  patch:
+    summary: update api
+
+    security:
+      bearerAuth: []
+
+    parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiId
+        in: path
+        required: true
+        schema:
+          type: string
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              description: 
+                type: string
+              method:
+                type: string
+                enum:  ["POST","GET","PATCH","DELETE","PUT","OPTIONS","HEAD"]
+              endpoint:
+                type: string
+              status: 
+                type: string
+                enum: ["draft","active","deprecated","archived"]
+
+    responses:
+      '200':
+        description: api updated successfully
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+
+      '400':
+        description: invalid data
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+              
+      '403':
+        description: user is not part of worksapce
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+
+      '404':
+        description: workspace not found, or invalid api
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+
+      '409':
+        description: api already existed
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'

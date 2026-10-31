@@ -1,0 +1,54 @@
+/worksapce/download-report/{worksapceId}:
+  get:
+    summary: download report of worksapce
+  
+    security: 
+      bearerAuth: []
+
+    parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+
+    responses:
+      '200':
+        description: report generation started successfully
+        content:
+          application/json:
+            schema: 
+              type: object
+              properties: 
+                success:
+                  type: boolean
+                data:
+                  $ref: '#/components/schemas/Report'
+
+      '400':
+        description: invalid data, or report is not ready yet, or try again
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+              
+      '401':
+        description: invalid report id 
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+
+      '403':
+        description: user is not part of worksapce
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+
+      '404':
+        description: workspace not found, or report not found
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'

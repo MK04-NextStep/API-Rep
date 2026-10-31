@@ -1,0 +1,53 @@
+/api/{workspaceId}/{apiId}:
+  get:
+    summary: get api
+
+    security:
+      - bearerAuth: []
+
+    parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+
+      - name: apiId
+        in: path
+        required: true
+        schema:
+          type: string
+
+    responses:
+      '200':
+        description: get api successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                data:
+                  $ref: '#/components/schemas/Api'
+
+      '400':
+        description: invalid data
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+
+      '403':
+        description: user is not part of workspace
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+
+      '404':
+        description: workspace not found, or invalid api
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'

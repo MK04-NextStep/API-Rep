@@ -1,0 +1,54 @@
+/workspace/workspacelist:
+  get:
+    summary: get workspace list according to user
+
+    security:
+      bearerAuth: []
+
+    parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+      - name: type
+        in: query
+        schema:
+          type: string
+      - name: search
+        in: query
+        schema: 
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+
+    response: 
+      '200':
+        description: user get workspacelist successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                success: 
+                  type: boolean
+                data: 
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Workspace'
+                pagination: 
+                  $ref: '#/components/schemas/Pagination'
+
+      '400':
+        description: invalid data
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'

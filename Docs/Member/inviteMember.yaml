@@ -1,0 +1,66 @@
+/member/invite/{workspaceId}:
+  post:
+    summary: invite target user to be member of workspace
+
+    security:
+      bearerAuth: []
+
+    parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - email
+              - role
+            properties:
+              email:
+                type: string
+                format: email
+              role:
+                type: string
+                enum: ["owner", "admin", "developer", "viewer"]
+    
+    responses:
+      '200':
+        description: invitation has been send to target email
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+
+      '400':
+        description: invalid data
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+              
+      '403':
+        description: user is not part of worksapce, or user cant invite themselves
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+
+      '404':
+        description: workspace not found, or please register first
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+
+      '409':
+        description: user is already member of worksapce
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'

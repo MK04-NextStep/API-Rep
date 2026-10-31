@@ -1,0 +1,73 @@
+/member/{workspaceId}:
+  get:
+    summary: get member list according to workspace
+
+    security:
+      bearerAuth: []
+
+    parameters:
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+      - name: type
+        in: query
+        schema:
+          type: string
+      - name: search
+        in: query
+        schema: 
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+
+    responses:
+      '200':
+        description: get member list successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success: 
+                  type: boolean
+                data:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Member'
+                pagination:
+                  $ref: '#/components/schemas/Pagination'
+      
+      '400':
+        description: invalid data
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+              
+      '403':
+        description: user is not part of worksapce
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'
+
+      '404':
+        description: workspace not found
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Error'

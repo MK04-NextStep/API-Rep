@@ -13,7 +13,6 @@ const generateOtp = require('../Utils/generateOtp');
 const verifyRefreshToken = require('../Utils/verifyRefreshToken');
 const logger = require('../Config/logger')
 const cloudinary = require('../Config/cloudinary')
-const sendEmail = require('../Config/mailer')
 const { addEmailQueue, addPasswordQueue } = require('../Queues/email.queue')
 const addFileQueue = require('../Queues/file.queue')
 
