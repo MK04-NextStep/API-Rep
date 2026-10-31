@@ -88,10 +88,6 @@ Errors are handled through the application's error-handling mechanism.
 
 ## Project Structure
 
-The project separates application configuration, routing, business logic, and data access.
-
-## Project Structure
-
 API Registry follows a layered architecture that separates HTTP handling, business logic, data access, background processing, and infrastructure configuration.
 
 ```text
