@@ -90,7 +90,53 @@ Errors are handled through the application's error-handling mechanism.
 
 The project separates application configuration, routing, business logic, and data access.
 
-The exact directory tree and the responsibilities of individual folders will be documented here after verifying the current repository structure.
+## Project Structure
+
+API Registry follows a layered architecture that separates HTTP handling, business logic, data access, background processing, and infrastructure configuration.
+
+```text
+API-Registry/
+├── Config/          # Database, Redis, Cloudinary, mailer, logger, rate limits
+├── Controller/      # HTTP request handlers
+├── Docs/            # OpenAPI endpoint definitions and reusable schemas
+├── Errors/          # Custom application error classes
+├── Files/           # File-related storage or resources
+├── Jobs/            # Background job definitions
+├── Middleware/      # Authentication, authorization, validation, uploads, errors
+├── Models/          # Mongoose data models
+├── Queues/          # Queue-related modules
+├── Repositories/    # Database access and persistence operations
+├── Routes/          # Express routes and application configuration
+├── Services/        # Business logic and application workflows
+├── Tests/           # Unit and integration tests
+├── uploads/         # Local upload directory
+├── Utils/           # Shared utilities and token/OTP helpers
+├── Validators/      # Request validation schemas and rules
+└── Worker/          # Background-processing workers
+```
+
+### Directory Responsibilities
+
+| Directory | Responsibility |
+|---|---|
+| `Config/` | Configures infrastructure integrations, including MongoDB, Redis, Cloudinary, email, logging, and rate limiting. |
+| `Controller/` | Handles incoming HTTP requests and sends responses. |
+| `Docs/` | Contains endpoint-level OpenAPI definitions and reusable documentation schemas. |
+| `Errors/` | Defines custom application errors for consistent error handling. |
+| `Files/` | Holds file-related resources; its precise purpose depends on its contents. |
+| `Jobs/` | Contains modules defining background jobs. |
+| `Middleware/` | Handles request processing concerns such as authentication, authorization, validation, uploads, and error handling. |
+| `Models/` | Defines Mongoose models and database schemas. |
+| `Queues/` | Contains modules responsible for queue-related operations. |
+| `Repositories/` | Encapsulates data-access operations and database persistence. |
+| `Routes/` | Defines API routes and configures the Express application. |
+| `Services/` | Implements business logic and coordinates application operations. |
+| `Tests/` | Contains unit and integration tests. |
+| `uploads/` | Provides a local upload directory; its role relative to external storage needs verification. |
+| `Utils/` | Provides shared helpers for asynchronous execution, files, tokens, and OTP generation. |
+| `Validators/` | Defines validation rules for incoming request data. |
+| `Worker/` | Contains worker modules for email, file, OTP, and report processing. |
+
 
 ## Authentication and Authorization
 
