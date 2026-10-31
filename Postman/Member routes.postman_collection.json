@@ -1,0 +1,161 @@
+{
+  "info": {
+    "_postman_id": "74022c34-0c7f-4028-8ac0-b9f92313f5e8",
+    "name": "Member routes",
+    "description": "It contains manual teating of Member Routes\n\n- POST /member/invite/:workspaceId : use to send invitation to user\n    \n- POST /member/accpet : use to accept invitation of workspace\n    \n- GET /member/:workspaceId : use to get list of members of workspace",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56001220",
+    "_collection_link": "https://go.postman.co/collection/56001220-74022c34-0c7f-4028-8ac0-b9f92313f5e8?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "invite",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"kaur20manjot04@gmail.com\",\r\n    \"role\": \"developer\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/member/invite/6acb97c7c3fdc71270993165",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "member",
+            "invite",
+            "6acb97c7c3fdc71270993165"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "accept",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"otp\": \"881643\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/member/accept",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "member",
+            "accept"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get member",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/member/6acb97c7c3fdc71270993165?page=1&limit=3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "member",
+            "6acb97c7c3fdc71270993165"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update member role",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/member/update-member-role/6acb97c7c3fdc71270993165",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "member",
+            "update-member-role",
+            "6acb97c7c3fdc71270993165"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "info": {
+    "_postman_id": "38f7c560-42f2-4f95-bb49-47ab74167276",
+    "name": "File Routes",
+    "description": "It contains manual teating of API routes.\n\n- POST /file/upload/:workspaceId : use to upload file in specific workspace\n    \n- GET /file/:workspaceId/:fileId : use to get specific file from specific workspace\n    \n- GET /file/:workspaceId : use to get list of files from specific workspace\n    \n- PATCH /file/:workspaceId/:fileId : use to update file\n    \n- DELETE /file/:workspaceId/:fileId : use to delete specific file",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56001220",
+    "_collection_link": "https://go.postman.co/collection/56001220-38f7c560-42f2-4f95-bb49-47ab74167276?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "create",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": [
+                "/C:/Users/HP/OneDrive/Documents/Manu/project/Docs/acceptInvite.yaml"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5000/file/upload/6acb97c7c3fdc71270993165",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "file",
+            "upload",
+            "6acb97c7c3fdc71270993165"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get file",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/file/6acb97c7c3fdc71270993165/6acdb8831ac6b3651cb79b83",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "file",
+            "6acb97c7c3fdc71270993165",
+            "6acdb8831ac6b3651cb79b83"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "file list",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/file/6acb97c7c3fdc71270993165?page=1&limit=10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "file",
+            "6acb97c7c3fdc71270993165"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/file/6acb97c7c3fdc71270993165/6acdb8831ac6b3651cb79b83",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "file",
+            "6acb97c7c3fdc71270993165",
+            "6acdb8831ac6b3651cb79b83"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "udpate file",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": [
+                "/C:/Users/HP/OneDrive/Documents/Manu/project/Docs/deleteApi.yaml"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5000/file/6acb97c7c3fdc71270993165/6acdb8831ac6b3651cb79b83",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "file",
+            "6acb97c7c3fdc71270993165",
+            "6acdb8831ac6b3651cb79b83"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

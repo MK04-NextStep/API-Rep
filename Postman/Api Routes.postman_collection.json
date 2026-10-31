@@ -1,0 +1,181 @@
+{
+  "info": {
+    "_postman_id": "d2053ec0-83f0-4cd7-aaf1-7636375f8428",
+    "name": "Api Routes",
+    "description": "It contains manual testing of API routes.\n\n- POST /api/:workspaceId : use to create API in specific workspace\n    \n- GET /api/:workspaceId/:apiId : use to get specific API from specific Workspace\n    \n- GET /api/:workspaceId : used to get API list of specific workspace\n    \n- PATCH /api/:workspaceId/:apiId : used to update specific API of specific workspace\n    \n- DELETE /api/:workspaceId/:apiId : used to delete specific API from specific workspace",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "create",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"first api\", \r\n    \"method\": \"GET\", \r\n    \"endpoint\": \"/auth/user\", \r\n    \"description\": \" this is to get list of user\", \r\n    \"status\": \"active\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/6acb97c7c3fdc71270993165",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "6acb97c7c3fdc71270993165"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get api",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/6acb97c7c3fdc71270993165/6acc6afb2cad81efe2f07aac",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "6acb97c7c3fdc71270993165",
+            "6acc6afb2cad81efe2f07aac"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get list",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/6acb97c7c3fdc71270993165",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "6acb97c7c3fdc71270993165"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"update api\",\r\n     \"method\": \"GET\",\r\n        \"endpoint\": \"/auth/user\",\r\n        \"description\": \" this is to get list of user\",\r\n        \"status\": \"active\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/6acb97c7c3fdc71270993165/6acc6afb2cad81efe2f07aac",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "6acb97c7c3fdc71270993165",
+            "6acc6afb2cad81efe2f07aac"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/6acb97c7c3fdc71270993165/6acc6afb2cad81efe2f07aac",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "6acb97c7c3fdc71270993165",
+            "6acc6afb2cad81efe2f07aac"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

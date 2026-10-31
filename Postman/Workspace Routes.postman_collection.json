@@ -1,0 +1,207 @@
+{
+  "info": {
+    "_postman_id": "a690270a-b1f7-4d9a-b0ae-76aa7e54001f",
+    "name": "Workspace Routes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56001220",
+    "_collection_link": "https://go.postman.co/collection/56001220-a690270a-b1f7-4d9a-b0ae-76aa7e54001f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "create",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"six workspace\",\r\n    \"description\": \"this is my first workspace\",\r\n    \"type\": \"team\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/workspace/new",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "workspace",
+            "new"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get workspace",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/workspace/workspacelist/6acb38c7d9fd3bd93e606c5f",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "workspace",
+            "workspacelist",
+            "6acb38c7d9fd3bd93e606c5f"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get workspacelist",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/workspace/workspacelist?type=team&search=workspace",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "workspace",
+            "workspacelist"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "2",
+              "disabled": true
+            },
+            {
+              "key": "limit",
+              "value": "3",
+              "disabled": true
+            },
+            {
+              "key": "sort",
+              "value": "createdAt",
+              "disabled": true
+            },
+            {
+              "key": "type",
+              "value": "team"
+            },
+            {
+              "key": "search",
+              "value": "workspace"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"update workspace\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/workspace/update/6acb38c7d9fd3bd93e606c5f",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "workspace",
+            "update",
+            "6acb38c7d9fd3bd93e606c5f"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/workspace/delete/6acb38c7d9fd3bd93e606c5f",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "workspace",
+            "delete",
+            "6acb38c7d9fd3bd93e606c5f"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
