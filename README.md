@@ -58,8 +58,6 @@ flowchart TD
     Repositories --> MongoDB
 ```
 
-The diagram represents the intended request flow through the application's layers. It should be verified against the actual route and service implementations before final publication.
-
 ### Architectural responsibilities
 
 - **Application layer:** Configures Express middleware, API routes, and application-wide behavior.
