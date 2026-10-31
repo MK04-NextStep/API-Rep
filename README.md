@@ -161,8 +161,6 @@ The workspace module supports the following operations:
 
 Workspace routes use the applicable authentication, validation, membership, and role-checking middleware.
 
-The exact permissions and response contracts for each operation are documented in the API specification.
-
 ## API Documentation Management
 
 API Registry supports uploading API specification files in JSON and YAML formats.
@@ -172,8 +170,6 @@ API Registry supports uploading API specification files in JSON and YAML formats
 - The upload endpoint uses multipart form data with a single file field named `file`.
 - The current upload configuration includes a 5 MB file-size limit.
 - Upload requests are associated with a workspace and pass through the relevant workspace and validation middleware.
-
-Further documentation can describe specification parsing, file persistence, validation rules, and file lifecycle behavior as implemented.
 
 ## Security and Validation
 
@@ -186,8 +182,6 @@ The application uses several layers of request protection:
 - Input validation before controller execution.
 - Cookie security attributes for refresh-token handling.
 - Centralized error handling for consistent failure responses.
-
-Actual configuration values and endpoint-specific security behavior should be documented alongside the API specification.
 
 ## Testing
 
@@ -204,10 +198,6 @@ The test suite uses mock data and test dependencies where appropriate to isolate
 Postman collections are used to exercise endpoint success cases, failure cases, and edge cases across the API.
 
 The Postman collection complements automated tests by making endpoint behavior easy to inspect and reproduce.
-
-### Running tests
-
-The exact commands will be documented from the project's `package.json` scripts.
 
 ## Getting Started
 
@@ -229,16 +219,70 @@ Configure the required environment variables before starting the server.
 
 ## Architecture Decisions and Trade-offs
 
-This section will document the reasoning behind important engineering decisions, including:
+API Registry follows several architectural decisions aimed at improving maintainability, separation of concerns, security, and reliability.
 
-- Layered architecture and separation of concerns.
-- Repository abstraction and database access.
-- Authentication and refresh-token handling.
-- Workspace authorization and role enforcement.
-- Validation and centralized error handling.
-- File-upload restrictions and storage decisions.
-- Testing strategy and dependency isolation.
+### 1. Layered Architecture
 
-Each decision should describe the reason for the chosen approach, alternatives considered, and relevant trade-offs.
+The application separates controllers, services, and repositories to maintain clear responsibilities across the backend.
+
+- Controllers handle HTTP requests and responses.
+- Services implement business logic and coordinate application operations.
+- Repositories encapsulate database operations.
+
+**Trade-off:** This separation improves maintainability and makes individual components easier to test, but introduces additional layers and some implementation overhead.
+
+### 2. Repository Pattern
+
+Database operations are encapsulated within dedicated repository modules rather than being distributed throughout controllers and services.
+
+This reduces direct database-access dependencies in the business logic and provides a centralized location for persistence operations.
+
+**Trade-off:** The additional abstraction improves organization but can introduce unnecessary complexity for simple database operations.
+
+### 3. Asynchronous Background Processing
+
+The application separates background-processing responsibilities into job, queue, and worker modules for operations such as email delivery, OTP processing, file processing, and report generation.
+
+This architecture allows suitable time-consuming tasks to be processed independently of the HTTP request-response lifecycle.
+
+**Trade-off:** Asynchronous processing improves request responsiveness for suitable operations but introduces additional complexity involving job failures, retries, queue management, and worker availability.
+
+### 4. Authentication and Workspace-Level Authorization
+
+Authentication and authorization are handled through dedicated middleware rather than being embedded directly into individual controllers.
+
+The application uses token-based authentication and workspace-specific permission checks to control access to protected operations.
+
+**Trade-off:** Centralized access control improves consistency and reduces duplicated checks, but requires careful middleware ordering and permission enforcement across all relevant routes.
+
+### 5. Centralized Error Handling and Request Validation
+
+Custom application error classes and centralized error middleware provide a consistent approach to handling application failures.
+
+Request validation is separated into dedicated validators and middleware, allowing invalid input to be rejected before reaching business logic.
+
+**Trade-off:** This improves consistency and maintainability but requires clear validation rules and a well-defined error-handling convention.
+
+### 6. Dedicated Infrastructure Configuration
+
+External integrations and infrastructure-related configuration are separated into dedicated modules.
+
+This includes database connectivity, Redis, Cloudinary, email delivery, logging, and rate limiting.
+
+**Trade-off:** Centralized configuration simplifies maintenance and integration management but requires careful environment-variable management and dependency initialization.
+
+---
 
 ## Limitations and Future Improvements
+
+Although API Registry implements several backend engineering practices, there are areas that can be improved as the application evolves.
+
+Potential improvements include:
+
+- **Expanded Automated Testing:** Increase unit and integration test coverage across authentication, API management, file operations, member management, and background-processing workflows.
+- **CI/CD Pipeline:** Introduce automated testing, build validation, and deployment workflows to improve release consistency.
+- **Monitoring and Observability:** Extend structured logging with application metrics, request tracing, and background-worker monitoring.
+- **Background Job Reliability:** Strengthen retry strategies, failure handling, and recovery mechanisms for asynchronous operations.
+- **Production Deployment:** Establish a complete deployment workflow with production environment configuration, health checks, and infrastructure monitoring.
+
+These improvements represent potential future development rather than currently implemented functionality.
